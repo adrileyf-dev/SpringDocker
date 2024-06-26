@@ -30,3 +30,11 @@ jobs:
     - name: Docker compose Build   
       working-directory: ./app
       run: docker compose build
+    - name: push to Docker Hub
+      run: |
+        docker tag docker-from-zero-to-mastery-java:latest ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:latest
+        docker tag docker-from-zero-to-mastery-java:latest ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:${{github.run_id}}
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:latest
+        docker push ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:${{github.run_id}}
+        
+      
