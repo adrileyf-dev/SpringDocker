@@ -20,7 +20,7 @@ services:
     networks:
       - erudio-network
     volumes:
-      - db_data:/var/lib/mysql  # Adicionado volume para persistência de dados
+      - db:/var/lib/mysql  # Adicionado volume para persistência de dados
 
   docker-from-zero-to-mastery-java:
     image: adrileyf/docker-from-zero-to-mastery-java
