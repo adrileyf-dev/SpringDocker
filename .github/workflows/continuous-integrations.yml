@@ -29,12 +29,4 @@ jobs:
       run: mvn clean package
     - name: Docker compose Build   
       working-directory: ./ 
-      run: docker compose build
-              
-              
-
-
-Invalid workflow file: .github/workflows/continuous-integrations.yml#L17
-The workflow is not valid. .github/workflows/continuous-integrations.yml (Line: 17, Col: 19): Unrecognized named-value: 'DOCKER_USERNAME'. Located at position 1 within expression: DOCKER_USERNAME .github/workflows/continuous-integrations.yml (Line: 18, Col: 19): Unrecognized named-value: 'DOCKER_PASSWORD'. Located at position 1 within expression: DOCKER_PASSWORD
-
- 
+      run: docker compose build 
