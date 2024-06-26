@@ -28,5 +28,5 @@ jobs:
       working-directory: ./app
       run: mvn clean package
     - name: Docker compose Build   
-      working-directory: ./ 
-      run: docker compose build 
+      working-directory: ./app
+      run: docker compose build
