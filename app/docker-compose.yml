@@ -31,7 +31,7 @@ services:
       SPRING.DATASOURCE.USERNAME: root
       SPRING.DATASOURCE.PASSWORD: docker
     ports:
-      - 80:80
+      - 8080:8080
     command: mvn spring-boot:run
     depends_on:
       - db
