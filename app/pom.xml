@@ -72,7 +72,6 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
-        
 
         
         <dependency>
@@ -114,7 +113,7 @@
             <optional>true</optional>
         </dependency> 
   </dependencies>
-  
+
   <build>
   		<plugins>
 			<plugin>
@@ -124,11 +123,11 @@
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3308/devapp?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
-                    <user>root</user>
-                    <password>docker</password>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <url>jdbc:mysql://localhost:3306/devapp?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>-->
+<!--                    <user>developer</user>-->
+<!--                    <password>123456</password>-->
+<!--                </configuration>-->
 				<dependencies>
 					<dependency>
                         <groupId>com.mysql</groupId>
@@ -142,7 +141,7 @@
 						</exclusions>
 					</dependency>
 				</dependencies>
-			</plugin>			
+			</plugin>
   		</plugins>
   </build>
 
