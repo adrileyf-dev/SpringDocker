@@ -13,7 +13,7 @@ services:
       MYSQL_DATABASE: appdev
      
     ports:
-      - 3308:3306    
+      - 3308:3308    
     networks:
       - erudio-network   
   docker-from-zero-to-mastery-java:
