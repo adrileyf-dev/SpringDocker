@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -28,12 +27,11 @@ import jakarta.servlet.http.HttpServletRequest;
 @Tag(name = "File Endpoint")
 @RestController
 @RequestMapping("/api/file/v1")
-
 public class FileController {
 	
 	private Logger logger = Logger.getLogger(FileController.class.getName());
 	
- 	@Autowired
+	@Autowired
 	private FileStorageService service;
 	
 	@PostMapping("/uploadFile")

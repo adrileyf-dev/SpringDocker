@@ -1,41 +1,23 @@
-package br.com.erudio.model;
+package br.com.erudio.integrationtests.vo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name = "books")
-public class Book implements Serializable {
-
+@XmlRootElement
+public class BookVO implements Serializable{
+ 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable = false, length = 180)
 	private String author;
-
-	@Column(name = "launch_date", nullable = false)
-	@Temporal(TemporalType.DATE)
 	private Date launchDate;
-	
-	@Column(nullable = false)
 	private Double price;
-	
-	@Column(nullable = false, length = 250)
 	private String title;
 	
-	public Book() {}
+	public BookVO() {
+	}
 
 	public Long getId() {
 		return id;
@@ -80,7 +62,7 @@ public class Book implements Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((launchDate == null) ? 0 : launchDate.hashCode());
@@ -93,11 +75,11 @@ public class Book implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Book other = (Book) obj;
+		BookVO other = (BookVO) obj;
 		if (author == null) {
 			if (other.author != null)
 				return false;
