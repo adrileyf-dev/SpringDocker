@@ -15,10 +15,11 @@ security:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3308/appdev?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://192.168.1.11:3306/devapp?useTimezone=true&serverTimezone=UTC
     username: docker
     password: docker
   jpa:
+    dialect: org.hibernate.dialect.MySQLDialect
     open-in-view: false
     hibernate:
       ddl-auto: none
