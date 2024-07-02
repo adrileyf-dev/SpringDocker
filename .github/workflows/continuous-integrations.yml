@@ -1,9 +1,9 @@
-name: Continuous integrations GitHub,GitHub Actions,Docker Hub
+name: Continuous integrations GitHub, GitHub Actions, Docker Hub
 
 on:
   push:
-    branches: master 
-  
+    branches: master
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,21 +20,22 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v4.2.1
       with:
-    # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-         java-version: '21'
-         distribution: 'adopt'   
-         cache:  maven
-    - name: Build Application Jar   
+        java-version: '21'
+        distribution: 'adopt'
+        cache: maven
+
+    - name: Build Application Jar
       working-directory: ./app
       run: mvn clean package
-    - name: Docker compose Build   
+
+    - name: Build Docker image
       working-directory: ./app
-      run: docker compose build
-    - name: push to Docker Hub
+      run: docker build -t devdocker:latest .
+
+    - name: Push to Docker Hub
       run: |
-        docker tag docker-from-zero-to-mastery-java:latest ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:latest
-        docker tag docker-from-zero-to-mastery-java:latest ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:${{ github.run_id }} 
-        docker push ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:latest
-        docker push ${{secrets.DOCKER_USERNAME}}/docker-from-zero-to-mastery-java:${{ github.run_id }}
-        
-      
+        docker tag devdocker:latest ${{secrets.DOCKER_USERNAME}}/devdocker:latest
+        docker tag devdocker:latest ${{secrets.DOCKER_USERNAME}}/devdocker:${{ github.run_id }}
+        docker push ${{secrets.DOCKER_USERNAME}}/devdocker:latest
+        docker push ${{secrets.DOCKER_USERNAME}}/devdocker:${{ github.run_id }}
+
